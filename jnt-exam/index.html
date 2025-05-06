@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J&T Express - Knowledge Base</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #D82B21; /* J&T Red */
+            --secondary: #333333; /* J&T Dark Gray */
+            --accent: #FFD700; /* Gold accent */
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .logo {
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 0.2rem;
+        }
+        
+        .logo h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .logo h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--secondary);
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .logo h3::before,
+        .logo h3::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .logo h3::before {
+            left: -40px;
+        }
+        
+        .logo h3::after {
+            right: -40px;
+        }
+        
+        .search-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-top: 4px solid var(--primary);
+        }
+        
+        .search-box {
+            display: flex;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 2px solid #e9ecef;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding-right: 3.5rem;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(216, 43, 33, 0.2);
+        }
+        
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            bottom: 5px;
+            width: 50px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-btn:hover {
+            background: var(--secondary);
+        }
+        
+        .results-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            min-height: 300px;
+            border-top: 4px solid var(--primary);
+        }
+        
+        .result-count {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .qa-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .qa-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        
+        .question i {
+            color: var(--primary);
+            margin-top: 0.2rem;
+        }
+        
+        .answer {
+            color: var(--dark);
+            padding-left: 1.8rem;
+        }
+        
+        .no-results {
+            text-align: center;
+            color: var(--gray);
+            padding: 2rem;
+        }
+        
+        .no-results i {
+            font-size: 3rem;
+            color: #e9ecef;
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .logo h1 {
+                font-size: 2.5rem;
+            }
+            
+            .logo h2 {
+                font-size: 1.4rem;
+            }
+            
+            .logo h3 {
+                font-size: 1rem;
+            }
+            
+            .logo h3::before,
+            .logo h3::after {
+                width: 15px;
+            }
+            
+            .logo h3::before {
+                left: -25px;
+            }
+            
+            .logo h3::after {
+                right: -25px;
+            }
+            
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .search-input {
+                margin-bottom: 1rem;
+                padding-right: 1.5rem;
+            }
+            
+            .search-btn {
+                position: relative;
+                width: 100%;
+                right: auto;
+                top: auto;
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>J&T</h1>
+                <h2>EXPRESS</h2>
+                <h3>— Express Your Online Business —</h3>
+            </div>
+        </header>
+        
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" class="search-input" placeholder="Type your question here...">
+                <button class="search-btn" onclick="searchQuestion()">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="results-container" id="resultsContainer">
+            <div class="no-results" id="initialState">
+                <i class="fas fa-truck"></i>
+                <h3>J&T Express Knowledge Base</h3>
+                <p>Search our database of frequently asked questions and exam preparation materials</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 created by balbas. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Sample Q&A Data for J&T Express
+        const qaData = [
+            {
+                question: "What are J&T Express's shipping rates?",
+                answer: "Our shipping rates vary by package weight and destination:<br><br>" +
+                        "- Luzon: ₱60 for first 1kg, ₱10 for each additional kg<br>" +
+                        "- Visayas: ₱80 for first 1kg, ₱15 for each additional kg<br>" +
+                        "- Mindanao: ₱100 for first 1kg, ₱20 for each additional kg"
+            },
+            {
+                question: "How can I track my J&T Express package?",
+                answer: "You can track your package through these methods:<br><br>" +
+                        "1. Visit our <a href='#' style='color: var(--primary);'>tracking page</a> and enter your tracking number<br>" +
+                        "2. Use our mobile app<br>" +
+                        "3. Contact our customer service hotline at (02) 8888-8888"
+            },
+            {
+                question: "What are J&T Express's operating hours?",
+                answer: "Our standard operating hours are:<br><br>" +
+                        "- Branches: 8:00 AM to 6:00 PM (Monday-Saturday)<br>" +
+                        "- Customer Service: 24/7 available through hotline and chat"
+            },
+            {
+                question: "How do I file a claim for damaged goods?",
+                answer: "To file a damage claim:<br><br>" +
+                        "1. Report within 24 hours of delivery<br>" +
+                        "2. Provide photos of damaged package and contents<br>" +
+                        "3. Submit original receipt and waybill<br>" +
+                        "4. Visit any J&T branch to complete claim form"
+            },
+            {
+                question: "What payment methods does J&T accept?",
+                answer: "We accept:<br><br>" +
+                        "- Cash on Delivery<br>" +
+                        "- Credit/Debit Cards<br>" +
+                        "- GCash<br>" +
+                        "- Maya<br>" +
+                        "- Bank Transfers"
+            }
+        ];
+
+        function searchQuestion() {
+            const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+            const resultsContainer = document.getElementById('resultsContainer');
+            const initialState = document.getElementById('initialState');
+            
+            if (!searchTerm) {
+                resultsContainer.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-exclamation-circle" style="color: var(--primary);"></i>
+                        <h3>Please enter a search term</h3>
+                        <p>Try searching for shipping rates, tracking, or policies</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Show loading state
+            resultsContainer.innerHTML = `
+                <div class="no-results">
+                    <i class="fas fa-spinner fa-spin" style="color: var(--primary);"></i>
+                    <h3>Searching our knowledge base...</h3>
+                </div>
+            `;
+            
+            // Simulate API call delay
+            setTimeout(() => {
+                const results = qaData.filter(item => 
+                    item.question.toLowerCase().includes(searchTerm) || 
+                    item.answer.toLowerCase().includes(searchTerm)
+                );
+                
+                displayResults(results);
+            }, 800);
+        }
+        
+        function displayResults(results) {
+            const resultsContainer = document.getElementById('resultsContainer');
+            
+            if (results.length === 0) {
+                resultsContainer.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-frown" style="color: var(--primary);"></i>
+                        <h3>No results found</h3>
+                        <p>Try different keywords or contact our customer service</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = `
+                <div class="result-count">Found ${results.length} matching result${results.length !== 1 ? 's' : ''}</div>
+            `;
+            
+            results.forEach(item => {
+                html += `
+                    <div class="qa-item">
+                        <div class="question">
+                            <i class="far fa-question-circle"></i>
+                            ${highlightMatches(item.question, document.getElementById('searchInput').value.trim())}
+                        </div>
+                        <div class="answer">
+                            ${highlightMatches(item.answer, document.getElementById('searchInput').value.trim())}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            resultsContainer.innerHTML = html;
+        }
+        
+        function highlightMatches(text, searchTerm) {
+            if (!searchTerm) return text;
+            const regex = new RegExp(`(${searchTerm})`, 'gi');
+            return text.replace(regex, '<span style="background-color: #FFEBEE; color: var(--primary); font-weight: bold;">$1</span>');
+        }
+        
+        // Allow search on Enter key
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchQuestion();
+            }
+        });
+    </script>
+</body>
+</html>
