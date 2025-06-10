@@ -286,43 +286,69 @@
         // Sample Q&A Data for J&T Express
         const qaData = [
             {
-                question: "What are J&T Express's shipping rates?",
-                answer: "Our shipping rates vary by package weight and destination:<br><br>" +
-                        "- Luzon: ₱60 for first 1kg, ₱10 for each additional kg<br>" +
-                        "- Visayas: ₱80 for first 1kg, ₱15 for each additional kg<br>" +
-                        "- Mindanao: ₱100 for first 1kg, ₱20 for each additional kg"
+                question: "The customer's phone is turned off. What evidence shouId be provided to make a PP?",
+                answer: "ANSWER: D. All of the above needs to be provided"
             },
             {
-                question: "How can I track my J&T Express package?",
-                answer: "You can track your package through these methods:<br><br>" +
-                        "1. Visit our <a href='#' style='color: var(--primary);'>tracking page</a> and enter your tracking number<br>" +
-                        "2. Use our mobile app<br>" +
-                        "3. Contact our customer service hotline at (02) 8888-8888"
+                question: "The seller doesn't want to proceed with the shipment anymore and wants to cancel. What proof needs to be provided by the rider?",
+                answer: "ANSWER: B. Letter or text confirmation with the seller included AWB and call Iog with 10 seconds talk time."
             },
             {
-                question: "What are J&T Express's operating hours?",
-                answer: "Our standard operating hours are:<br><br>" +
-                        "- Branches: 8:00 AM to 6:00 PM (Monday-Saturday)<br>" +
-                        "- Customer Service: 24/7 available through hotline and chat"
+                question: " If the sender is not present at the pickup address , what PP do you choose?",
+                answer: "ANSWER: C. Customer Absence"
             },
             {
-                question: "How do I file a claim for damaged goods?",
-                answer: "To file a damage claim:<br><br>" +
-                        "1. Report within 24 hours of delivery<br>" +
-                        "2. Provide photos of damaged package and contents<br>" +
-                        "3. Submit original receipt and waybill<br>" +
-                        "4. Visit any J&T branch to complete claim form"
+                question: "The seller is not at the location, what is the proof that neeeds to be provided by the rider?",
+                answer: "ANSWER: B. A text confirmation with the seller that they are not at thelocation, and the call log that shows a connection time of at least 10 seconds of talk time."
             },
             {
-                question: "What payment methods does J&T accept?",
-                answer: "We accept:<br><br>" +
-                        "- Cash on Delivery<br>" +
-                        "- Credit/Debit Cards<br>" +
-                        "- GCash<br>" +
-                        "- Maya<br>" +
-                        "- Bank Transfers"
-            }
+                question: "The customer told the rider over the phone that his goods didnot need to be returned. Which reason should be chosen for PP?",
+                answer: "ANSWER: C. Customer cancelled to ship the item"
+            },
+            {
+                question: "A prohibited item is found during the pickup, what sshould the rider do?",
+                answer: "ANSWER: D. The photo with timestamp and geo-tagging of the waybill with cleear AWB, along with a photo of the prohibited item."
+            },
+            {
+                question: "An item exceeds maximum allowable size of 180CM, what should you do?",
+                answer: "ANSWER: C. A photo of the item with timestamp and geo-tagging, showing that it exceeds the maximum allowable size on any side, along with a photo of the clear waybill number."
+            },
+            {
+                question: "The rider went to the location but the customer was not around and uncontacted. What evidence should be provided to make a PP?",
+                answer: "ANSWER: D. All of the above needs to be provided."
+            },
+            {
+                question: "What should the rider do if the customer says they will reeschedule the pickup?",
+                answer: "ANSWER: C. Confirmation with the seller via text message to verify that they are not at the location and to request a rescheduled date."
+            },
+            {
+                question: "What elements must the rider check before completing the order?",
+                answer: "ANSWER: D. All of the above needs to be done."
+            },
+            {
+                question: "Is this photo VALID for CUSTOMER REJECTION-1?",
+                answer: "NO, there is NO RESPONSE from receiver"
+            },
+            {
+                question: "In which case will the call be recorded as valid by system?",
+                answer: "Only calls through APP will be recorded"
+            },
+            {
+                question: "For POD proof, if the receiver CAN _______, what should be included in the photo?",
+                answer: "A. Receiver ID<br>" +
+                       "B. Clear Waybill<br>" +
+                       "C. Geotag and timestamp"
+            },
+            {
+                question: "Where can we typically find the segment code on an air waybill?",
+                answer: "009"
+            },
+            {
+                question: "After delivery attempt, we should _______ all the proofs after going back to the Branch",
+                answer: "WRONG, PP should be performed at the receiver address on the waybill following SOP"
+            }            
         ];
+   
 
         function searchQuestion() {
             const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
@@ -334,7 +360,7 @@
                     <div class="no-results">
                         <i class="fas fa-exclamation-circle" style="color: var(--primary);"></i>
                         <h3>Please enter a search term</h3>
-                        <p>Try searching for shipping rates, tracking, or policies</p>
+                        <p>NO RESULT</p>
                     </div>
                 `;
                 return;
@@ -367,7 +393,7 @@
                     <div class="no-results">
                         <i class="fas fa-frown" style="color: var(--primary);"></i>
                         <h3>No results found</h3>
-                        <p>Try different keywords or contact our customer service</p>
+                        <p>Try different keywords or contact balbas</p>
                     </div>
                 `;
                 return;
